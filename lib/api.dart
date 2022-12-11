@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vrra_flutter/models/queue.dart';
+
+import 'models/asset.dart';
+import 'models/queue.dart';
 
 class ApiException implements Exception {
   final String message;
@@ -51,5 +51,15 @@ class Api {
   Future<QueueItem> pushQueue(PushQueueBody body) async {
     var res = await apiCall('POST', '/queue/push', body);
     return QueueItem.fromJson(res);
+  }
+
+  Future<Asset> getAsset(int id) async {
+    var res = await apiCall('GET', '/assets/$id', null);
+    return Asset.fromJson(res);
+  }
+
+  Future<Asset> addAsset(AddAssetBody body) async {
+    var res = await apiCall('POST', '/assets', body);
+    return Asset.fromJson(res);
   }
 }
