@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vrra_flutter/models/queue.dart';
 import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 
@@ -71,7 +72,7 @@ class _QueueTabState extends State<QueueTab> {
                     (BuildContext context, int index) {
                       final item = _queue[index];
                       return CupertinoListTile(
-                        trailing: {
+                        leading: {
                           QueueItemStatus.completed: const Icon(
                               CupertinoIcons.check_mark_circled,
                               color: CupertinoColors.activeGreen),
@@ -87,7 +88,9 @@ class _QueueTabState extends State<QueueTab> {
                         }[item.status]!,
                         title: Text(item.name,
                             style: Theme.of(context).textTheme.titleMedium),
-                        subtitle: Text(item.created.toString(),
+                        subtitle: Text(
+                            DateFormat('yyyy-MM-dd HH:mm')
+                                .format(item.created),
                             style: Theme.of(context).textTheme.caption),
                         dense: true,
                       );
