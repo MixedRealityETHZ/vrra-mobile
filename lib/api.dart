@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'models/asset.dart';
 import 'models/queue.dart';
+import 'models/room.dart';
 
 class ApiException implements Exception {
   final String message;
@@ -54,6 +55,14 @@ class Api {
   Future<QueueItem> pushQueue(PushQueueBody body) async {
     var res = await apiCall('POST', '/queue', body);
     return QueueItem.fromJson(res);
+  }
+
+  Future<List<Room>> getRooms() async {
+    var res = await apiCall('GET', '/rooms', null);
+    if (res is List) {
+      return res.map((e) => Room.fromJson(e)).toList();
+    }
+    throw TypeError();
   }
 
   Future<Asset> getAsset(int id) async {

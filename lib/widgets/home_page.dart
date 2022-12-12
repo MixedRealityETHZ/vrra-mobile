@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:vrra_flutter/widgets/queue_tab.dart';
+
+import 'queue_tab.dart';
+import 'room_tab.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class HomePage extends StatelessWidget {
           case 1:
             returnValue = CupertinoTabView(builder: (context) {
               return const CupertinoPageScaffold(
-                child: QueueTab(),
+                child: RoomTab(),
               );
             });
             break;
