@@ -2,7 +2,16 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'queue.g.dart';
 
-enum QueueItemStatus { pending, inProgress, completed, failed }
+enum QueueItemStatus {
+  @JsonValue('Pending')
+  pending,
+  @JsonValue('InProgress')
+  inProgress,
+  @JsonValue('Completed')
+  completed,
+  @JsonValue('Failed')
+  failed
+}
 
 @JsonSerializable()
 class QueueItem {

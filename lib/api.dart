@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import 'models/asset.dart';
@@ -20,7 +21,9 @@ abstract class JsonDeserializable {
 
 class Api {
   static final baseUrl = Uri.https("vrra.howyoung.dev");
-  static final client = http.Client();
+  final client = http.Client();
+
+  static final instance = Api();
 
   Future<dynamic> apiCall(String method, String path, Object? body) async {
     var req = http.Request(method, baseUrl.resolve(path));
@@ -49,7 +52,7 @@ class Api {
   }
 
   Future<QueueItem> pushQueue(PushQueueBody body) async {
-    var res = await apiCall('POST', '/queue/push', body);
+    var res = await apiCall('POST', '/queue', body);
     return QueueItem.fromJson(res);
   }
 
@@ -61,5 +64,24 @@ class Api {
   Future<Asset> addAsset(AddAssetBody body) async {
     var res = await apiCall('POST', '/assets', body);
     return Asset.fromJson(res);
+  }
+
+  Future setAssetUploaded(int id) async {
+    await apiCall('POST', '/assets/$id/uploaded', null);
+  }
+
+  Future<Asset> uploadAsset(String name, Uint8List data) async {
+    var asset = await addAsset(AddAssetBody(name));
+    assert(asset.url != null);
+    var url = Uri.parse(asset.url!).replace(scheme: 'https');
+    var req = http.Request('PUT', url);
+    req.headers['Content-Type'] = 'application/zip';
+    req.bodyBytes = data;
+    var res = await client.send(req);
+    if (res.statusCode < 200 || res.statusCode >= 300) {
+      throw ApiException(await res.stream.bytesToString(), res.statusCode);
+    }
+    await setAssetUploaded(asset.id);
+    return asset;
   }
 }

@@ -25,8 +25,8 @@ Map<String, dynamic> _$AssetToJson(Asset instance) => <String, dynamic>{
     };
 
 const _$AssetStatusEnumMap = {
-  AssetStatus.uploading: 'uploading',
-  AssetStatus.ready: 'ready',
+  AssetStatus.uploading: 'Uploading',
+  AssetStatus.ready: 'Ready',
 };
 
 AddAssetBody _$AddAssetBodyFromJson(Map<String, dynamic> json) => AddAssetBody(

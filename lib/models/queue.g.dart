@@ -35,10 +35,10 @@ Map<String, dynamic> _$QueueItemToJson(QueueItem instance) => <String, dynamic>{
     };
 
 const _$QueueItemStatusEnumMap = {
-  QueueItemStatus.pending: 'pending',
-  QueueItemStatus.inProgress: 'inProgress',
-  QueueItemStatus.completed: 'completed',
-  QueueItemStatus.failed: 'failed',
+  QueueItemStatus.pending: 'Pending',
+  QueueItemStatus.inProgress: 'InProgress',
+  QueueItemStatus.completed: 'Completed',
+  QueueItemStatus.failed: 'Failed',
 };
 
 PushQueueBody _$PushQueueBodyFromJson(Map<String, dynamic> json) =>

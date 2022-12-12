@@ -1,37 +1,13 @@
-/*translate c# class to dart:
-public enum AssetStatus
-{
-    Uploading,
-    Ready,
-}
-
-public class Asset
-{
-    public int Id { get; set; }
-
-    public string Name { get; set; } = "";
-
-    public AssetStatus Status { get; set; }
-
-    public DateTime Created { get; set; }
-
-    public DateTime Updated { get; set; }
-
-    public string? Url { get; set; }
-    
-}
-
-public class AddAssetBody
-{
-    public string Name { get; set; } = "";
-}
-*/
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'asset.g.dart';
 
-enum AssetStatus { uploading, ready }
+enum AssetStatus {
+  @JsonValue('Uploading')
+  uploading,
+  @JsonValue('Ready')
+  ready
+}
 
 @JsonSerializable()
 class Asset {
