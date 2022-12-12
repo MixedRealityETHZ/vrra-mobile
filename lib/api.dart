@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import 'models/asset.dart';
+import 'models/model.dart';
 import 'models/queue.dart';
 import 'models/room.dart';
 
@@ -61,6 +62,14 @@ class Api {
     var res = await apiCall('GET', '/rooms', null);
     if (res is List) {
       return res.map((e) => Room.fromJson(e)).toList();
+    }
+    throw TypeError();
+  }
+
+  Future<List<Model>> getModels() async {
+    var res = await apiCall('GET', '/models', null);
+    if (res is List) {
+      return res.map((e) => Model.fromJson(e)).toList();
     }
     throw TypeError();
   }
