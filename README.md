@@ -1,16 +1,13 @@
-# vrra_flutter
+# Mobile App of 3D Room Arrangements System
 
-A new Flutter project.
+Welcome to the repository of the mobile app of the project ["3D Room Arrangements using Virtual Reality"](https://github.com/MixedRealityETHZ/3d-vr-room-arrangements). It allows users to submit the 3D scan to the backend for segmentation, and track the status of the task in the Queue tab. The app also provides a handy way to preview existing rooms and models. The application is built with Flutter to support cross-platform on iOS/iPadOS, Android, macOS, Windows, Linux, and Web. The Cupertino widgets are used to provide a native experience on iOS devices.
 
-## Getting Started
+<img src="images/queue.png" width="24%"/>&nbsp;<img src="images/upload.png" width="24%"/>&nbsp;<img src="images/rooms.png" width="24%"/>&nbsp;<img src="images/models.png" width="24%"/>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Build and Run
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To build the app, [Flutter](https://flutter.dev/docs/get-started/install) with the necessary toolchains to build apps for the target platform must be installed. For example, to build the app for iOS, Xcode must be installed as described [here](https://docs.flutter.dev/get-started/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter documentation also provides detailed instructions on how to build and run the app on different platforms. For example, on iOS platform, build, sign, and run the app using Xcode as described [here](https://flutter.dev/docs/deployment/ios). CocoaPods also needs to be installed to enable the native iOS file picker.
